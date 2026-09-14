@@ -18,8 +18,7 @@ function renderProducts() {
     const li = document.createElement("li");
     li.innerHTML = `${product.name} - $${product.price} <button class="add-to-cart-btn" data-id="${product.id}">Add to Cart</button>`; 
     productList.appendChild(li);
-	li.querySelector(".add-to-cart-btn").addEventListener("click", () => {
-  addToCart(product.id);
+	
 });
   });
 }
@@ -58,7 +57,7 @@ function removeFromCart(productId) {
 // Clear cart
 function clearCart() {
 	 sessionStorage.setItem("key", JSON.stringify([]));
-	renderCart();
+
 }
 
 // Initial render
