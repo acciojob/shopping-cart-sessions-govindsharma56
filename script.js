@@ -27,6 +27,15 @@ function renderProducts() {
 // Render cart list
 function renderCart() {
 	let cart = JSON.parse(sessionStorage.getItem("key")) || [];
+	let cartList = document.getElementById("cart-list");
+	cartList.innerHTML='';
+	cart.forEach((product)=>{
+		const li=document.createElement('li');
+		  
+    li.innerHTML = `
+      ${product.name} - $${product.price}`;
+    })
+	 cartList.appendChild(li);
 	
 }
 
