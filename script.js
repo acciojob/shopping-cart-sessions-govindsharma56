@@ -42,7 +42,7 @@ function renderCart() {
 // Add item to cart
 function addToCart(productId) {
 	let product=products.filter((item)=>(item.id===productId));
-	sessionStorage.setItem('key',JSON.stringyfy(product))
+	sessionStorage.setItem('key',JSON.stringify(product))
 }
 
 // Remove item from cart
