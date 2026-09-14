@@ -42,7 +42,9 @@ function renderCart() {
 // Add item to cart
 function addToCart(productId) {
 	let product=products.filter((item)=>(item.id===productId));
-	sessionStorage.setItem('key',JSON.stringify(product))
+	let cart = JSON.parse(sessionStorage.getItem("key")) || [];
+	cart.push(product);
+	   sessionStorage('key',JSON.stringify(cart));
 }
 
 // Remove item from cart
@@ -55,6 +57,7 @@ function removeFromCart(productId) {
 // Clear cart
 function clearCart() {
 	 sessionStorage.setItem("key", JSON.stringify([]));
+	renderCart();
 }
 
 // Initial render
