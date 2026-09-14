@@ -33,7 +33,6 @@ function renderCart() {
 	cartList.innerHTML='';
 	cart.forEach((product)=>{
 		const li=document.createElement('li');
-		  
     li.innerHTML = `
       ${product.name} - $${product.price}`;
 		cartList.appendChild(li);
@@ -44,7 +43,7 @@ function renderCart() {
 
 // Add item to cart
 function addToCart(productId) {
-	let product=products.filter((item)=>(item.id===productId));
+	let product=products.find((item)=>(item.id===productId));
 	let cart = JSON.parse(sessionStorage.getItem("key")) || [];
 	cart.push(product);
 	   sessionStorage.setItem('key',JSON.stringify(cart));
@@ -54,12 +53,13 @@ function addToCart(productId) {
 function removeFromCart(productId) {
 	let product=JSON.parse(sessionStorage.getItem('key'))
 	let filterproduct=product.filter((item)=>item.id!==productId)
-	  sessionStorage('key',JSON.stringyfy(filterproduct))
+	  sessionStorage.setItem('key',JSON.stringify(filterproduct))
 }
 
 // Clear cart
 function clearCart() {
 	 sessionStorage.setItem("key", JSON.stringify([]));
+	renderCart();
 
 }
 
