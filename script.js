@@ -34,8 +34,9 @@ function renderCart() {
 		  
     li.innerHTML = `
       ${product.name} - $${product.price}`;
+		cartList.appendChild(li);
     })
-	 cartList.appendChild(li);
+	 
 	
 }
 
@@ -44,7 +45,7 @@ function addToCart(productId) {
 	let product=products.filter((item)=>(item.id===productId));
 	let cart = JSON.parse(sessionStorage.getItem("key")) || [];
 	cart.push(product);
-	   sessionStorage('key',JSON.stringify(cart));
+	   sessionStorage.setItem('key',JSON.stringify(cart));
 }
 
 // Remove item from cart
